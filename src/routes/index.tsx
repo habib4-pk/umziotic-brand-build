@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import { toast } from "sonner";
 import { ProductCard } from "@/components/site/ProductCard";
+import { Reveal } from "@/components/site/Reveal";
 import { products } from "@/lib/products";
 import heroBottle from "@/assets/hero-bottle.jpg";
 import storyHerbs from "@/assets/story-herbs.jpg";
@@ -72,11 +73,12 @@ function Home() {
 
   return (
     <>
-      <section className="bg-base-alt">
-        <div className="section-x grid items-center gap-10 py-16 lg:grid-cols-2 lg:py-24">
-          <div>
-            <h1 className="font-display text-4xl leading-[1.1] text-primary sm:text-5xl lg:text-6xl">
-              Transform
+      <Reveal>
+        <section className="bg-base-alt overflow-hidden">
+          <div className="section-x grid items-center gap-10 pt-8 pb-16 lg:grid-cols-2 lg:pt-12 lg:pb-24">
+            <div>
+              <h1 className="font-display text-4xl leading-[1.1] sm:text-5xl lg:text-6xl bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent pb-1">
+                Transform
               <br />
               Yourself
               <br />
@@ -101,14 +103,16 @@ function Home() {
               alt="Umziotic herbal hair growth support formula bottle with botanicals"
               width={1024}
               height={1024}
-              className="w-full rounded-3xl object-cover shadow-lift"
+              className="w-full rounded-3xl object-cover shadow-lift animate-float"
             />
           </div>
         </div>
       </section>
+      </Reveal>
 
-      <section className="border-y border-border bg-background">
-        <div className="section-x grid grid-cols-2 gap-6 py-8 sm:grid-cols-3 lg:grid-cols-5">
+      <Reveal delay={100}>
+        <section className="border-y border-border bg-background">
+          <div className="section-x grid grid-cols-2 gap-6 py-8 sm:grid-cols-3 lg:grid-cols-5">
           {trust.map(({ icon: Icon, label }) => (
             <div key={label} className="flex items-center gap-3">
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border text-gold">
@@ -117,11 +121,21 @@ function Home() {
               <span className="text-xs leading-snug text-muted-foreground">{label}</span>
             </div>
           ))}
+          </div>
+        </section>
+      </Reveal>
+
+      <section className="overflow-hidden border-b border-border bg-mint/20 py-4">
+        <div className="flex w-max animate-marquee items-center gap-12 whitespace-nowrap px-4 font-display text-sm uppercase tracking-widest text-primary">
+          {Array(8).fill("✦ 100% Organic ✦ Clinically Proven ✦ No Artificial Additives ✦ Made in Pakistan").map((text, i) => (
+            <span key={i}>{text}</span>
+          ))}
         </div>
       </section>
 
-      <section className="section-x py-16">
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
+      <Reveal delay={150}>
+        <section className="section-x py-16">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
           <div className="min-w-0">
             <h2 className="text-2xl text-primary sm:text-3xl">Bestsellers</h2>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -132,15 +146,17 @@ function Home() {
             View All
           </Link>
         </div>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
           {bestsellers.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
-        </div>
-      </section>
+          </div>
+        </section>
+      </Reveal>
 
-      <section className="bg-base-alt">
-        <div className="section-x grid items-center gap-12 py-16 lg:grid-cols-2">
+      <Reveal>
+        <section className="bg-base-alt">
+          <div className="section-x grid items-center gap-12 py-16 lg:grid-cols-2">
           <div>
             <h2 className="max-w-sm text-2xl leading-snug text-primary sm:text-3xl">
               Rooted in Nature, Backed by Science
@@ -162,11 +178,13 @@ function Home() {
             height={768}
             className="w-full rounded-3xl object-cover shadow-soft"
           />
-        </div>
-      </section>
+          </div>
+        </section>
+      </Reveal>
 
-      <section className="section-x py-16 text-center">
-        <h2 className="text-2xl text-primary sm:text-3xl">What Our Customers Say</h2>
+      <Reveal delay={100}>
+        <section className="section-x py-16 text-center">
+          <h2 className="text-2xl text-primary sm:text-3xl">What Our Customers Say</h2>
         <div className="mt-8 flex items-center justify-center gap-4">
           <button
             aria-label="Previous testimonial"
@@ -194,11 +212,13 @@ function Home() {
           >
             <ChevronRight size={18} strokeWidth={1.5} />
           </button>
-        </div>
-      </section>
+          </div>
+        </section>
+      </Reveal>
 
-      <section className="bg-primary">
-        <div className="section-x grid items-center gap-8 py-14 lg:grid-cols-2">
+      <Reveal delay={50}>
+        <section className="bg-primary">
+          <div className="section-x grid items-center gap-8 py-14 lg:grid-cols-2">
           <div>
             <h2 className="text-2xl text-primary-foreground sm:text-3xl">Stay in the Loop</h2>
             <p className="mt-2 text-sm text-primary-foreground/70">
@@ -224,8 +244,9 @@ function Home() {
               Subscribe
             </button>
           </form>
-        </div>
-      </section>
+          </div>
+        </section>
+      </Reveal>
     </>
   );
 }

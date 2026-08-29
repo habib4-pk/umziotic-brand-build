@@ -6,6 +6,11 @@ import { ProductCard } from "@/components/site/ProductCard";
 import { CATEGORIES, CONCERNS, categoryCounts, formatPKR, products } from "@/lib/products";
 
 export const Route = createFileRoute("/shop")({
+  validateSearch: (search: Record<string, unknown>): { q?: string | undefined } => {
+    return {
+      q: typeof search["q"] === "string" ? search["q"] : undefined,
+    };
+  },
   head: () => ({
     meta: [
       { title: "Shop Herbal Supplements — Umziotic" },
@@ -27,11 +32,12 @@ export const Route = createFileRoute("/shop")({
 const PER_PAGE = 6;
 
 function Shop() {
+  const searchParams = Route.useSearch();
   const [cats, setCats] = useState<string[]>([]);
   const [concerns, setConcerns] = useState<string[]>([]);
   const [maxPrice, setMaxPrice] = useState(5000);
   const [appliedPrice, setAppliedPrice] = useState(5000);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(searchParams.q || "");
   const [sort, setSort] = useState("featured");
   const [page, setPage] = useState(1);
 
@@ -172,7 +178,7 @@ function Shop() {
               No products match your filters.
             </p>
           ) : (
-            <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
               {visible.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}

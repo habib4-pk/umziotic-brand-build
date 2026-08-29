@@ -14,8 +14,8 @@ export function ProductCard({ product }: { product: Product }) {
     : 0;
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl bg-card shadow-soft transition-shadow hover:shadow-lift">
-      <div className="relative">
+    <article className="group flex flex-col overflow-hidden rounded-2xl bg-card shadow-soft transition-all duration-300 hover:shadow-[0_12px_30px_-10px_rgba(30,57,50,0.15)] hover:-translate-y-1">
+      <div className="relative overflow-hidden">
         <Link to="/product/$id" params={{ id: product.id }} className="block">
           <img
             src={product.image}
@@ -23,7 +23,7 @@ export function ProductCard({ product }: { product: Product }) {
             loading="lazy"
             width={1024}
             height={1024}
-            className="aspect-square w-full object-cover"
+            className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
         </Link>
         <button
