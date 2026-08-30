@@ -14,7 +14,7 @@ export interface HeroCarouselProps {
 
 export function HeroCarousel({
   slides = sampleHeroSlides,
-  intervalMs = 7000,
+  intervalMs = 15000,
   className = "",
 }: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -121,17 +121,18 @@ export function HeroCarousel({
   }
 
   return (
-    <div
-      role="region"
-      aria-label="Product carousel"
-      tabIndex={0}
-      onKeyDown={handleKeyDown}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      onTouchStart={() => setIsPaused(true)}
-      onTouchEnd={() => setIsPaused(false)}
-      className={`group relative w-full overflow-hidden bg-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary aspect-[3/2] sm:aspect-[16/9] max-h-[85vh] ${className}`}
-    >
+    <div className="w-full px-3 sm:px-5 md:px-6 mt-3">
+      <div
+        role="region"
+        aria-label="Product carousel"
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
+        className={`group relative w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary h-[55vh] min-h-[400px] sm:h-[65vh] md:h-[72vh] lg:h-[76vh] max-h-[650px] ${className}`}
+      >
       {/* 
         SLIDE TRACK CONTAINER
         Uses CSS flexbox track shifted horizontally via `translateX(-${currentIndex * 100}%)`.
@@ -158,13 +159,13 @@ export function HeroCarousel({
                 className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110 pointer-events-none select-none"
               />
 
-              {/* Main Contained Slide Image - Fits 100% inside container without any cropping */}
+              {/* Main Slide Image - Stretches to fill 100% of the hero section */}
               <img
                 src={slide.imageUrl}
                 alt={slide.title}
                 loading={isFirstSlide ? "eager" : "lazy"}
                 fetchPriority={isFirstSlide ? "high" : "low"}
-                className="w-full h-full object-contain object-center relative z-0"
+                className="w-full h-full object-cover object-center relative z-0"
               />
 
               {/* Dark Gradient Overlay for Contrast & Text Readability */}
@@ -262,5 +263,6 @@ export function HeroCarousel({
         </div>
       )}
     </div>
-  );
+  </div>
+);
 }
