@@ -74,7 +74,7 @@ function Home() {
 
   return (
     <>
-      <HeroCarousel />
+      <HeroCarousel intervalMs={15000} />
       <Reveal>
         <section className="bg-base-alt overflow-hidden">
           <div className="section-x grid items-center gap-10 pt-8 pb-16 lg:grid-cols-2 lg:pt-12 lg:pb-24">
