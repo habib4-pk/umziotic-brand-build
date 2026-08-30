@@ -35,8 +35,8 @@ const seedOrders: Order[] = [
     status: "Delivered",
     total: 6800,
     items: [
-      { name: products[0].name, qty: 1, price: products[0].price },
-      { name: products[1].name, qty: 2, price: products[1].price },
+      { name: products[0]!.name, qty: 1, price: products[0]!.price },
+      { name: products[1]!.name, qty: 2, price: products[1]!.price },
     ],
     address: "House 24, Gulberg III, Lahore, Pakistan",
   },
@@ -45,7 +45,7 @@ const seedOrders: Order[] = [
     date: "May 15, 2026",
     status: "Shipped",
     total: 4500,
-    items: [{ name: products[3].name, qty: 2, price: products[3].price }],
+    items: [{ name: products[3]!.name, qty: 2, price: products[3]!.price }],
     address: "House 24, Gulberg III, Lahore, Pakistan",
   },
   {
@@ -53,7 +53,7 @@ const seedOrders: Order[] = [
     date: "May 10, 2026",
     status: "Processing",
     total: 4250,
-    items: [{ name: products[2].name, qty: 1, price: products[2].price }],
+    items: [{ name: products[2]!.name, qty: 1, price: products[2]!.price }],
     address: "House 24, Gulberg III, Lahore, Pakistan",
   },
   {
@@ -61,7 +61,7 @@ const seedOrders: Order[] = [
     date: "May 05, 2026",
     status: "Cancelled",
     total: 2150,
-    items: [{ name: products[5].name, qty: 1, price: products[5].price }],
+    items: [{ name: products[5]!.name, qty: 1, price: products[5]!.price }],
     address: "House 24, Gulberg III, Lahore, Pakistan",
   },
 ];

@@ -14,6 +14,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { ProductCard } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
+import { HeroCarousel } from "@/components/site/HeroCarousel";
 import { products } from "@/lib/products";
 import heroBottle from "@/assets/hero-bottle.jpg";
 import storyHerbs from "@/assets/story-herbs.jpg";
@@ -69,10 +70,11 @@ const testimonials = [
 function Home() {
   const [t, setT] = useState(0);
   const bestsellers = products.slice(0, 4);
-  const active = testimonials[t];
+  const active = testimonials[t] ?? testimonials[0]!;
 
   return (
     <>
+      <HeroCarousel />
       <Reveal>
         <section className="bg-base-alt overflow-hidden">
           <div className="section-x grid items-center gap-10 pt-8 pb-16 lg:grid-cols-2 lg:pt-12 lg:pb-24">
