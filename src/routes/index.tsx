@@ -217,33 +217,33 @@ function Home() {
       </Reveal>
 
       <Reveal delay={50}>
-        <section className="bg-primary">
-          <div className="section-x grid items-center gap-8 py-14 lg:grid-cols-2">
-          <div>
-            <h2 className="text-2xl text-primary-foreground sm:text-3xl">Stay in the Loop</h2>
-            <p className="mt-2 text-sm text-primary-foreground/70">
-              Get exclusive offers, health tips and updates.
-            </p>
-          </div>
-          <form
-            className="flex gap-3"
-            onSubmit={(e) => {
-              e.preventDefault();
-              toast.success("You're subscribed!", { description: "Welcome to the Umziotic list." });
-              (e.target as HTMLFormElement).reset();
-            }}
-          >
-            <input
-              type="email"
-              required
-              placeholder="Enter your email"
-              aria-label="Email address"
-              className="field"
-            />
-            <button type="submit" className="btn-gold shrink-0">
-              Subscribe
-            </button>
-          </form>
+        <section className="py-8 px-4 sm:px-6 md:px-8">
+          <div className="grid items-center gap-8 rounded-3xl bg-primary py-8 px-6 md:py-10 md:px-12 lg:grid-cols-2 shadow-lg">
+            <div>
+              <h2 className="text-2xl text-primary-foreground sm:text-3xl">Stay in the Loop</h2>
+              <p className="mt-2 text-sm text-primary-foreground/70">
+                Get exclusive offers, health tips and updates.
+              </p>
+            </div>
+            <form
+              className="flex gap-3"
+              onSubmit={(e) => {
+                e.preventDefault();
+                toast.success("You're subscribed!", { description: "Welcome to the Umziotic list." });
+                (e.target as HTMLFormElement).reset();
+              }}
+            >
+              <input
+                type="email"
+                required
+                placeholder="Enter your email"
+                aria-label="Email address"
+                className="field"
+              />
+              <button type="submit" className="btn-gold shrink-0">
+                Subscribe
+              </button>
+            </form>
           </div>
         </section>
       </Reveal>

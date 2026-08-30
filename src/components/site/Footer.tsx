@@ -34,62 +34,64 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="mt-20 bg-primary text-primary-foreground">
-      <div className="section-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-5">
-        <div className="lg:col-span-2">
-          <Logo light />
-          <p className="mt-4 max-w-xs text-sm text-primary-foreground/70">
-            Premium herbal supplements crafted from nature for a healthier, happier you.
-          </p>
-        </div>
+    <footer className="mt-20 pb-4 w-full px-4 sm:px-6 md:px-8">
+      <div className="rounded-3xl bg-primary text-primary-foreground shadow-lg overflow-hidden">
+        <div className="grid gap-8 py-8 px-6 md:py-12 md:px-10 lg:grid-cols-5">
+          <div className="lg:col-span-2">
+            <Logo light />
+            <p className="mt-4 max-w-xs text-sm text-primary-foreground/70">
+              Premium herbal supplements crafted from nature for a healthier, happier you.
+            </p>
+          </div>
 
-        {columns.map((col) => (
-          <div key={col.title}>
-            <h4 className="font-display text-base text-gold">{col.title}</h4>
-            <ul className="mt-4 space-y-2 text-sm text-primary-foreground/75">
-              {col.links.map((l) => (
-                <li key={l.label}>
-                  <Link to={l.to} className="transition-colors hover:text-gold">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
+          {columns.map((col) => (
+            <div key={col.title}>
+              <h4 className="font-display text-base text-gold">{col.title}</h4>
+              <ul className="mt-4 space-y-2 text-sm text-primary-foreground/75">
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    <Link to={l.to} className="transition-colors hover:text-gold">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div>
+            <h4 className="font-display text-base text-gold">Contact</h4>
+            <ul className="mt-4 space-y-3 text-sm text-primary-foreground/75">
+              <li className="flex items-start gap-2">
+                <Phone size={15} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold" />
+                +92 300 1234567
+              </li>
+              <li className="flex items-start gap-2">
+                <Mail size={15} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold" />
+                hello@umziotic.com
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin size={15} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold" />
+                Lahore, Pakistan
+              </li>
             </ul>
-          </div>
-        ))}
-
-        <div>
-          <h4 className="font-display text-base text-gold">Contact</h4>
-          <ul className="mt-4 space-y-3 text-sm text-primary-foreground/75">
-            <li className="flex items-start gap-2">
-              <Phone size={15} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold" />
-              +92 300 1234567
-            </li>
-            <li className="flex items-start gap-2">
-              <Mail size={15} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold" />
-              hello@umziotic.com
-            </li>
-            <li className="flex items-start gap-2">
-              <MapPin size={15} strokeWidth={1.5} className="mt-0.5 shrink-0 text-gold" />
-              Lahore, Pakistan
-            </li>
-          </ul>
-          <div className="mt-5 flex gap-3 text-gold">
-            <a href="#" aria-label="Instagram">
-              <Instagram size={18} strokeWidth={1.5} />
-            </a>
-            <a href="#" aria-label="Facebook">
-              <Facebook size={18} strokeWidth={1.5} />
-            </a>
-            <a href="#" aria-label="YouTube">
-              <Youtube size={18} strokeWidth={1.5} />
-            </a>
+            <div className="mt-5 flex gap-3 text-gold">
+              <a href="#" aria-label="Instagram">
+                <Instagram size={18} strokeWidth={1.5} />
+              </a>
+              <a href="#" aria-label="Facebook">
+                <Facebook size={18} strokeWidth={1.5} />
+              </a>
+              <a href="#" aria-label="YouTube">
+                <Youtube size={18} strokeWidth={1.5} />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="border-t border-primary-foreground/15 py-5 text-center text-xs text-primary-foreground/60">
-        © 2024 Umziotic. All Rights Reserved.
+        <div className="border-t border-primary-foreground/15 py-5 text-center text-xs text-primary-foreground/60 mx-6 md:mx-10">
+          © 2024 Umziotic. All Rights Reserved.
+        </div>
       </div>
     </footer>
   );
