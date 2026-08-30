@@ -131,7 +131,7 @@ export function HeroCarousel({
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => setIsPaused(false)}
-        className={`group relative w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary h-[55vh] min-h-[400px] sm:h-[65vh] md:h-[72vh] lg:h-[76vh] max-h-[650px] ${className}`}
+      className={`group relative w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-slate-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary h-[440px] sm:h-[520px] md:h-[72vh] lg:h-[76vh] max-h-[650px] ${className}`}
       >
       {/* 
         SLIDE TRACK CONTAINER
@@ -159,28 +159,28 @@ export function HeroCarousel({
                 className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110 pointer-events-none select-none"
               />
 
-              {/* Main Slide Image - Stretches to fill 100% of the hero section */}
+              {/* Main Slide Image */}
               <img
                 src={slide.imageUrl}
                 alt={slide.title}
                 loading={isFirstSlide ? "eager" : "lazy"}
                 fetchPriority={isFirstSlide ? "high" : "low"}
-                className="w-full h-full object-cover object-center relative z-0"
+                className="w-full h-full object-cover object-top sm:object-center relative z-0"
               />
 
-              {/* Dark Gradient Overlay for Contrast & Text Readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent md:bg-gradient-to-r md:from-black/85 md:via-black/40 md:to-transparent z-0 pointer-events-none" />
+              {/* Dark Gradient Overlay for Mobile Contrast & Text Readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent sm:from-black/90 sm:via-black/40 sm:to-transparent md:bg-gradient-to-r md:from-black/85 md:via-black/40 md:to-transparent z-0 pointer-events-none" />
 
-              {/* Text Overlay Content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 md:p-16 lg:p-24 text-white z-10 max-w-4xl">
-                <span className="inline-block text-xs uppercase tracking-widest font-semibold text-gold mb-2">
+              {/* Mobile-Optimized Text Overlay Content */}
+              <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-10 md:p-16 lg:p-24 pb-8 sm:pb-12 text-white z-10 max-w-4xl">
+                <span className="inline-block text-[10px] sm:text-xs uppercase tracking-widest font-semibold text-gold mb-1 sm:mb-2">
                   Umziotic Wellness Collection
                 </span>
-                <h2 className="font-display text-3xl leading-tight sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-3 sm:mb-4 drop-shadow-md">
+                <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-2 sm:mb-4 drop-shadow-md">
                   {slide.title}
                 </h2>
                 {slide.subtitle && (
-                  <p className="text-sm sm:text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mb-6 font-normal">
+                  <p className="text-xs sm:text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mb-4 sm:mb-6 font-normal line-clamp-2 sm:line-clamp-none">
                     {slide.subtitle}
                   </p>
                 )}
@@ -191,18 +191,18 @@ export function HeroCarousel({
                         href={slide.ctaLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-full font-medium text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 sm:px-6 sm:py-3 bg-primary hover:bg-primary-hover text-white rounded-full font-medium text-xs sm:text-sm transition-all duration-200 shadow-md hover:shadow-xl hover:scale-105 active:scale-95"
                       >
                         {slide.ctaText}
-                        <ArrowRight size={16} />
+                        <ArrowRight size={14} className="sm:w-4 sm:h-4" />
                       </a>
                     ) : (
                       <Link
                         to={slide.ctaLink || "/shop"}
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-full font-medium text-sm transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 sm:px-6 sm:py-3 bg-primary hover:bg-primary-hover text-white rounded-full font-medium text-xs sm:text-sm transition-all duration-200 shadow-md hover:shadow-xl hover:scale-105 active:scale-95"
                       >
                         {slide.ctaText}
-                        <ArrowRight size={16} />
+                        <ArrowRight size={14} className="sm:w-4 sm:h-4" />
                       </Link>
                     )}
                   </div>
@@ -215,8 +215,7 @@ export function HeroCarousel({
 
       {/* 
         PREVIOUS & NEXT ARROW NAVIGATION BUTTONS
-        Positioned absolutely, vertically centered.
-        Visible on hover on desktop, always visible on mobile screens.
+        Subtle & low visibility by default to keep mobile focus on the hero content.
       */}
       {slideCount > 1 && (
         <>
@@ -224,17 +223,17 @@ export function HeroCarousel({
             type="button"
             onClick={() => handleManualInteraction(handlePrev)}
             aria-label="Previous slide"
-            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-all duration-300 hover:bg-primary hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white opacity-100 md:opacity-0 md:group-hover:opacity-100"
+            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-20 flex h-8 w-8 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-black/25 text-white/80 backdrop-blur-xs transition-all duration-300 hover:bg-primary hover:text-white hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white opacity-40 sm:opacity-0 sm:group-hover:opacity-100"
           >
-            <ChevronLeft size={24} strokeWidth={2} />
+            <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" strokeWidth={2} />
           </button>
           <button
             type="button"
             onClick={() => handleManualInteraction(handleNext)}
             aria-label="Next slide"
-            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-all duration-300 hover:bg-primary hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white opacity-100 md:opacity-0 md:group-hover:opacity-100"
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-20 flex h-8 w-8 sm:h-11 sm:w-11 items-center justify-center rounded-full bg-black/25 text-white/80 backdrop-blur-xs transition-all duration-300 hover:bg-primary hover:text-white hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white opacity-40 sm:opacity-0 sm:group-hover:opacity-100"
           >
-            <ChevronRight size={24} strokeWidth={2} />
+            <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" strokeWidth={2} />
           </button>
         </>
       )}

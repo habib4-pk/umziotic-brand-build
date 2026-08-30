@@ -10,7 +10,7 @@ export interface HeroSlide {
 export const sampleHeroSlides: HeroSlide[] = [
   {
     id: "hair-growth",
-    imageUrl: "/hero/Hair-Growth-Hero.png",
+    imageUrl: "/hero/Hair-Growth-Hero.webp",
     title: "Revitalize Your Hair Naturally",
     subtitle: "Nourish your scalp with 100% pure botanical herbs for stronger, thicker hair and root revival.",
     ctaText: "Shop Hair Care",
@@ -18,7 +18,7 @@ export const sampleHeroSlides: HeroSlide[] = [
   },
   {
     id: "healthy-skin",
-    imageUrl: "/hero/Healthy-Skin-Hero.png",
+    imageUrl: "/hero/Healthy-Skin-Hero.webp",
     title: "Glow With Natural Radiance",
     subtitle: "Clean herbal detox and skin rejuvenation formulas crafted for lasting health and beauty.",
     ctaText: "Discover Skin Care",
@@ -26,7 +26,7 @@ export const sampleHeroSlides: HeroSlide[] = [
   },
   {
     id: "mens-vitality",
-    imageUrl: "/hero/Mens-Vitaliy-Hero.png",
+    imageUrl: "/hero/Mens-Vitaliy-Hero.webp",
     title: "Boost Men's Vitality & Energy",
     subtitle: "Premium organic formulation designed to enhance natural stamina, strength, and overall wellness.",
     ctaText: "Explore Vitality Formula",
@@ -34,7 +34,7 @@ export const sampleHeroSlides: HeroSlide[] = [
   },
   {
     id: "height-growth",
-    imageUrl: "/hero/Height-Growth-Hero.png",
+    imageUrl: "/hero/Height-Growth-Hero.webp",
     title: "Unlock Natural Growth Potential",
     subtitle: "Essential organic nutrient blend formulated to support bone development and height growth.",
     ctaText: "Explore Height Growth",
@@ -42,7 +42,7 @@ export const sampleHeroSlides: HeroSlide[] = [
   },
   {
     id: "weight-loss",
-    imageUrl: "/hero/Weight-Loss-Hero.png",
+    imageUrl: "/hero/Weight-Loss-Hero.webp",
     title: "Achieve Your Ideal Fitness Goals",
     subtitle: "Boost metabolism and burn fat naturally with organic green teas & potent botanical extracts.",
     ctaText: "Shop Slimming Detox",
@@ -50,7 +50,7 @@ export const sampleHeroSlides: HeroSlide[] = [
   },
   {
     id: "weight-gain",
-    imageUrl: "/hero/Weight-Gain-Hero.png",
+    imageUrl: "/hero/Weight-Gain-Hero.webp",
     title: "Build Strength & Healthy Mass",
     subtitle: "Rich herbal blend formulated for optimal appetite enhancement, muscle recovery, and stamina.",
     ctaText: "View Weight Gain",
