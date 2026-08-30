@@ -33,6 +33,14 @@ export const sampleHeroSlides: HeroSlide[] = [
     ctaLink: "/shop",
   },
   {
+    id: "height-growth",
+    imageUrl: "/hero/Height-Growth-Hero.png",
+    title: "Unlock Natural Growth Potential",
+    subtitle: "Essential organic nutrient blend formulated to support bone development and height growth.",
+    ctaText: "Explore Height Growth",
+    ctaLink: "/shop",
+  },
+  {
     id: "weight-loss",
     imageUrl: "/hero/Weight-Loss-Hero.png",
     title: "Achieve Your Ideal Fitness Goals",
