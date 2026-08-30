@@ -159,28 +159,28 @@ export function HeroCarousel({
                 className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110 pointer-events-none select-none"
               />
 
-              {/* Main Slide Image */}
+              {/* Main Slide Image: object-contain on mobile so entire bottle graphic fits 100% without cropping */}
               <img
                 src={slide.imageUrl}
                 alt={slide.title}
                 loading={isFirstSlide ? "eager" : "lazy"}
                 fetchPriority={isFirstSlide ? "high" : "low"}
-                className="w-full h-full object-cover object-top sm:object-center relative z-0"
+                className="w-full h-full object-contain sm:object-cover object-center relative z-0"
               />
 
-              {/* Dark Gradient Overlay for Mobile Contrast & Text Readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent sm:from-black/90 sm:via-black/40 sm:to-transparent md:bg-gradient-to-r md:from-black/85 md:via-black/40 md:to-transparent z-0 pointer-events-none" />
+              {/* Dark Gradient Overlay for Contrast & Readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent sm:from-black/90 sm:via-black/40 sm:to-transparent md:bg-gradient-to-r md:from-black/85 md:via-black/40 md:to-transparent z-0 pointer-events-none" />
 
               {/* Mobile-Optimized Text Overlay Content */}
-              <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-10 md:p-16 lg:p-24 pb-8 sm:pb-12 text-white z-10 max-w-4xl">
-                <span className="inline-block text-[10px] sm:text-xs uppercase tracking-widest font-semibold text-gold mb-1 sm:mb-2">
+              <div className="absolute inset-0 flex flex-col justify-end p-3.5 sm:p-10 md:p-16 lg:p-24 pb-8 sm:pb-12 text-white z-10 max-w-4xl">
+                <span className="inline-block text-[9px] sm:text-xs uppercase tracking-widest font-semibold text-gold mb-0.5 sm:mb-2">
                   Umziotic Wellness Collection
                 </span>
-                <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-2 sm:mb-4 drop-shadow-md">
+                <h2 className="font-display text-lg sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-1.5 sm:mb-4 drop-shadow-md">
                   {slide.title}
                 </h2>
                 {slide.subtitle && (
-                  <p className="text-xs sm:text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mb-4 sm:mb-6 font-normal line-clamp-2 sm:line-clamp-none">
+                  <p className="text-[11px] sm:text-base md:text-lg text-white/90 leading-snug sm:leading-relaxed max-w-2xl mb-2.5 sm:mb-6 font-normal line-clamp-1 sm:line-clamp-none">
                     {slide.subtitle}
                   </p>
                 )}
@@ -191,18 +191,18 @@ export function HeroCarousel({
                         href={slide.ctaLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-4 py-2 sm:px-6 sm:py-3 bg-primary hover:bg-primary-hover text-white rounded-full font-medium text-xs sm:text-sm transition-all duration-200 shadow-md hover:shadow-xl hover:scale-105 active:scale-95"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-6 sm:py-3 bg-primary hover:bg-primary-hover text-white rounded-full font-medium text-[11px] sm:text-sm transition-all duration-200 shadow-md hover:shadow-xl hover:scale-105 active:scale-95"
                       >
                         {slide.ctaText}
-                        <ArrowRight size={14} className="sm:w-4 sm:h-4" />
+                        <ArrowRight size={13} className="sm:w-4 sm:h-4" />
                       </a>
                     ) : (
                       <Link
                         to={slide.ctaLink || "/shop"}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 sm:px-6 sm:py-3 bg-primary hover:bg-primary-hover text-white rounded-full font-medium text-xs sm:text-sm transition-all duration-200 shadow-md hover:shadow-xl hover:scale-105 active:scale-95"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-6 sm:py-3 bg-primary hover:bg-primary-hover text-white rounded-full font-medium text-[11px] sm:text-sm transition-all duration-200 shadow-md hover:shadow-xl hover:scale-105 active:scale-95"
                       >
                         {slide.ctaText}
-                        <ArrowRight size={14} className="sm:w-4 sm:h-4" />
+                        <ArrowRight size={13} className="sm:w-4 sm:h-4" />
                       </Link>
                     )}
                   </div>
