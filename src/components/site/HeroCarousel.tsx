@@ -152,21 +152,31 @@ export function HeroCarousel({
               aria-hidden={index !== currentIndex}
             >
               {/* Ambient Blurred Backdrop Layer for seamless background fill */}
-              <img
-                src={slide.imageUrl}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110 pointer-events-none select-none"
-              />
+              <picture className="contents">
+                {slide.mobileImageUrl && (
+                  <source media="(max-width: 639px)" srcSet={slide.mobileImageUrl} />
+                )}
+                <img
+                  src={slide.imageUrl}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-110 pointer-events-none select-none"
+                />
+              </picture>
 
-              {/* Main Slide Image: object-contain on mobile so entire bottle graphic fits 100% without cropping */}
-              <img
-                src={slide.imageUrl}
-                alt={slide.title}
-                loading={isFirstSlide ? "eager" : "lazy"}
-                fetchPriority={isFirstSlide ? "high" : "low"}
-                className="w-full h-full object-contain sm:object-cover object-center relative z-0"
-              />
+              {/* Main Slide Image: object-cover on all viewports so hero image covers 100% of container */}
+              <picture className="contents">
+                {slide.mobileImageUrl && (
+                  <source media="(max-width: 639px)" srcSet={slide.mobileImageUrl} />
+                )}
+                <img
+                  src={slide.imageUrl}
+                  alt={slide.title}
+                  loading={isFirstSlide ? "eager" : "lazy"}
+                  fetchPriority={isFirstSlide ? "high" : "low"}
+                  className="w-full h-full object-cover object-center relative z-0"
+                />
+              </picture>
 
               {/* Dark Gradient Overlay for Contrast & Readability */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-transparent sm:from-black/90 sm:via-black/40 sm:to-transparent md:bg-gradient-to-r md:from-black/85 md:via-black/40 md:to-transparent z-0 pointer-events-none" />
