@@ -48,23 +48,35 @@ const trust = [
 
 const testimonials = [
   {
-    quote:
-      "Umziotic has truly improved my energy and skin. I feel the difference naturally, without any side effects.",
+    quote: "Umziotic has truly improved my energy and skin. I feel the difference naturally, without any side effects.",
     name: "Ayesha Khan",
     location: "Lahore, Pakistan",
+    initials: "AK"
   },
   {
-    quote:
-      "The hair growth formula stopped my hair fall within two months. The quality of these herbs is unmatched.",
+    quote: "The hair growth formula stopped my hair fall within two months. The quality of these herbs is unmatched.",
     name: "Fatima Rizvi",
     location: "Karachi, Pakistan",
+    initials: "FR"
   },
   {
-    quote:
-      "Clean labels, honest sourcing and results I can actually see. This is my daily wellness ritual now.",
+    quote: "Clean labels, honest sourcing and results I can actually see. This is my daily wellness ritual now.",
     name: "Bilal Ahmed",
     location: "Islamabad, Pakistan",
+    initials: "BA"
   },
+  {
+    quote: "I've tried many supplements, but the U3 Weight Gain gave me exactly the boost I needed without feeling bloated.",
+    name: "Zainab Ali",
+    location: "Multan, Pakistan",
+    initials: "ZA"
+  },
+  {
+    quote: "Their detox tea is incredible. It tastes earthy and fresh, and I feel so much lighter every morning.",
+    name: "Omar Farooq",
+    location: "Peshawar, Pakistan",
+    initials: "OF"
+  }
 ];
 
 function Home() {
@@ -75,48 +87,12 @@ function Home() {
   return (
     <>
       <HeroCarousel intervalMs={15000} />
-      <Reveal>
-        <section className="bg-base-alt overflow-hidden">
-          <div className="section-x grid items-center gap-10 pt-8 pb-16 lg:grid-cols-2 lg:pt-12 lg:pb-24">
-            <div>
-              <h1 className="font-display text-4xl leading-[1.1] sm:text-5xl lg:text-6xl bg-gradient-to-r from-primary to-gold bg-clip-text text-transparent pb-1">
-                Transform
-              <br />
-              Yourself
-              <br />
-              Naturally
-            </h1>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-              Premium herbal supplements crafted from nature for a healthier, happier you — blended
-              with 15+ botanicals and tested for purity in every batch.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/shop" className="btn-primary">
-                Shop Now <ArrowRight size={16} strokeWidth={1.5} />
-              </Link>
-              <Link to="/about" className="btn-outline">
-                Explore Our Story
-              </Link>
-            </div>
-          </div>
-          <div className="relative">
-            <img
-              src={heroBottle}
-              alt="Umziotic herbal hair growth support formula bottle with botanicals"
-              width={1024}
-              height={1024}
-              className="w-full rounded-3xl object-cover shadow-lift animate-float"
-            />
-          </div>
-        </div>
-      </section>
-      </Reveal>
 
       <Reveal delay={100}>
         <section className="border-y border-border bg-background">
           <div className="section-x grid grid-cols-2 gap-6 py-8 sm:grid-cols-3 lg:grid-cols-5">
           {trust.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-3">
+            <div key={label} className={`flex items-center gap-3 ${label === "Made with Care" ? "hidden sm:flex" : ""}`}>
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border text-gold">
                 <Icon size={18} strokeWidth={1.25} />
               </span>
@@ -185,35 +161,34 @@ function Home() {
       </Reveal>
 
       <Reveal delay={100}>
-        <section className="section-x py-16 text-center">
-          <h2 className="text-2xl text-primary sm:text-3xl">What Our Customers Say</h2>
-        <div className="mt-8 flex items-center justify-center gap-4">
-          <button
-            aria-label="Previous testimonial"
-            onClick={() => setT((t - 1 + testimonials.length) % testimonials.length)}
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border text-primary transition-colors hover:bg-mint"
-          >
-            <ChevronLeft size={18} strokeWidth={1.5} />
-          </button>
-          <div className="max-w-xl flex-1 rounded-2xl bg-base-alt px-6 py-10">
-            <div className="flex justify-center gap-0.5">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} size={14} className="fill-gold text-gold" strokeWidth={1.5} />
+        <section className="py-16 text-center bg-[#F5F0E1]">
+          <h2 className="text-2xl text-primary sm:text-3xl font-bold tracking-tight">What Our Customers Say</h2>
+          
+          <div className="relative mt-12 w-full overflow-hidden group">
+            <div className="flex w-max animate-[marquee_35s_linear_infinite] hover:[animation-play-state:paused]">
+              {/* Double the list to create a seamless infinite scroll effect */}
+              {[...testimonials, ...testimonials].map((active, idx) => (
+                <div key={idx} className="w-[300px] sm:w-[400px] shrink-0 mx-3 rounded-2xl bg-white border border-primary/10 shadow-sm px-6 py-8 text-left flex flex-col hover:shadow-md transition-shadow">
+                  <div className="flex items-center gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star key={i} size={14} className="fill-gold text-gold" />
+                    ))}
+                  </div>
+                  <p className="font-medium text-primary/80 mb-6 flex-1 text-sm sm:text-base leading-relaxed">
+                    "{active.quote}"
+                  </p>
+                  <div className="flex items-center gap-4 mt-auto pt-4 border-t border-primary/5">
+                    <div className="w-11 h-11 shrink-0 rounded-full border-2 border-[#D4AF37]/30 shadow-sm bg-primary text-[#D4AF37] flex items-center justify-center font-bold text-lg tracking-wide">
+                      {active.initials}
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-primary">{active.name}</p>
+                      <p className="text-xs text-muted-foreground">{active.location}</p>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
-            <p className="mt-5 font-display text-lg leading-relaxed text-primary">
-              “{active.quote}”
-            </p>
-            <p className="mt-6 text-sm font-medium text-primary">{active.name}</p>
-            <p className="text-xs text-muted-foreground">{active.location}</p>
-          </div>
-          <button
-            aria-label="Next testimonial"
-            onClick={() => setT((t + 1) % testimonials.length)}
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border text-primary transition-colors hover:bg-mint"
-          >
-            <ChevronRight size={18} strokeWidth={1.5} />
-          </button>
           </div>
         </section>
       </Reveal>
